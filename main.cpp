@@ -7,12 +7,13 @@
 #else
 #include "window_win32.h"
 #endif
+
+#define SERVER_ADDRESS "localhost"
+#define SERVER_PORT 9013
+
 using namespace httplib;
 
 int main() {
-    const char* SERVER_ADDRESS = "localhost";
-    const int SERVER_PORT = 9013;
-
 
     Server svr;
     svr.Get("/status", [](const Request &req, Response &res) {
