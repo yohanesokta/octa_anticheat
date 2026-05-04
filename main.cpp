@@ -5,6 +5,7 @@
 
 
 std::string BIN_DIR = std::string(std::getenv("HOME")) + "/.config/octaAnticheat/";
+char* DESKTOP_ENVIRONTMENT = std::getenv("XDG_SESSION_TYPE");
 
 std::string run_command(const std::string& command) {
     FILE* pipe = popen(command.c_str(), "r");
@@ -23,7 +24,7 @@ std::string run_command(const std::string& command) {
 }
 
 std::string get_window_title() {
-    char* DESKTOP_ENVIRONTMENT = std::getenv("XDG_SESSION_TYPE");
+    DESKTOP_ENVIRONTMENT = std::getenv("XDG_SESSION_TYPE");
     if (strcmp(DESKTOP_ENVIRONTMENT,"wayland") == 0) {
         std::string window_id = run_command(BIN_DIR + "kdotool getactivewindow");
         std::string window_title = run_command(BIN_DIR + "kdotool getwindowname " + window_id);
@@ -50,7 +51,7 @@ int main() {
     Server svr;
     svr.Get("/status", [](const Request &req, Response &res) {
         std::string window_title =  get_window_title();
-        std::string json_output = std::string("{ 'active_window' : '', 'XDG_SESSION_TYPE' : '") + window_title +"' }";
+        std::string json_output = std::string("{ 'active_window' : '") + window_title +"', 'XDG_SESSION_TYPE' : '" + DESKTOP_ENVIRONTMENT +"' }";
         res.set_content(json_output, "application/json" );
     });
     
