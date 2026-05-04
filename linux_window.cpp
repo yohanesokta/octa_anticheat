@@ -1,5 +1,5 @@
 #ifndef _WIN32
-#include "linux_window.h"
+#include "window_manager.h"
 std::string BIN_DIR = std::string(std::getenv("HOME")) + "/.config/octaAnticheat/";
 char* DESKTOP_ENVIRONTMENT = std::getenv("XDG_SESSION_TYPE");
 
