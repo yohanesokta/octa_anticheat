@@ -1,16 +1,7 @@
-## OCTA ANTI CHEAT!
+## OCTA_ANTICHEAT
 
-> Aku Live IG untuk coding ini, hehe 😂
+Proyek ini dikembangkan secara langsung dan biasanya aku live [instagram](https://instagram.com/yohanesoktanio) untuk coding ini, sehingga mencerminkan proses eksplorasi dan implementasi secara real-time. Pendekatan yang digunakan menyesuaikan dengan sistem display server yang berjalan. Untuk lingkungan berbasis X11, interaksi terhadap window dilakukan menggunakan `xdotool`, sedangkan pada Wayland khususnya di KDE Plasma (KWin), digunakan `kdotool` sebagai alternatif yang kompatibel.
 
-Linux :
-- x11 : using `xdotool`
-- kwin ( wayland | kde plasma ) : using `kdotool` 
-  
-Windows:
-> using `win32` api
+Di sisi Windows, implementasi memanfaatkan Win32 API untuk mengakses dan memantau window secara langsung dengan kontrol yang lebih rendah terhadap sistem. Sementara itu, untuk macOS, pengujian belum dapat dilakukan karena keterbatasan perangkat, sehingga belum ada implementasi spesifik yang divalidasi pada platform tersebut.
 
-Mac Os:
-
-> aku tidak memiliki device apple samsek untuk mencobanya.
-
-dont worry, aku sudah bikin versi asli golang memakai api bawaan tapi tolong beritahu aku gimana kinerjanya
+Selain pendekatan berbasis tools tersebut, telah dikembangkan juga versi utama menggunakan bahasa Go yang langsung berinteraksi dengan API bawaan sistem operasi. Pendekatan ini diharapkan memberikan performa yang lebih optimal dan stabil, sehingga evaluasi terhadap kinerjanya menjadi hal yang penting untuk pengembangan selanjutnya.
