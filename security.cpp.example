@@ -1,0 +1,18 @@
+/**
+ * @brief Mengembalikan kunci rahasia (sementara / placeholder).
+ *
+ * Fungsi ini digunakan sebagai abstraksi untuk mengambil secret key
+ * yang akan digunakan oleh aplikasi (misalnya untuk autentikasi,
+ * signing request, dll).
+ *
+ * PERINGATAN KEAMANAN:
+ * - Implementasi saat ini mengembalikan string plaintext secara langsung.
+ * - Sangat tidak aman jika digunakan di production.
+ * - String dapat dengan mudah diekstrak dari binary (melalui static analysis
+ *   atau memory inspection).
+ *
+*/
+
+char* encrypted_keys() {
+    return "SECRET_123";
+}
