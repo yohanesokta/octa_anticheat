@@ -16,6 +16,8 @@
 
 #else
 #include <cstdlib>
+#include <cstring>
+
 #endif
 
 

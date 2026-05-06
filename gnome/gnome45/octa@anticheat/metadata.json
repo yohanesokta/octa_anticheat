@@ -1,0 +1,8 @@
+{
+  "name": "Octa Anticheat",
+  "description": "Anticheat software for Codelab@octanio",
+  "uuid": "octa@anticheat",
+  "shell-version": [
+    "50"
+  ]
+}
