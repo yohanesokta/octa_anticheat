@@ -1,6 +1,6 @@
 #include "include/httplib.h"
+#include "include/json.hpp"
 #include <stdio.h>
-#include <cstdlib>
 #include <string>
 #include "window_manager.h"
 
@@ -8,19 +8,23 @@
 #define SERVER_PORT 9013
 
 using namespace httplib;
+using json = nlohmann::json;
+
 Server svr;
 
 void listen_server() {
 
+
     svr.Get("/status", [](const Request &req, Response &res) {
         std::string window_title =  get_window_title();
-        std::string json_output = std::string("{ 'active_window' : '") + window_title + "'}";
-        res.set_content(json_output, "application/json" );
+        json j;
+        j["active_window"] = window_title;
+        res.set_content(j.dump(), "application/json" );
     });
-    
+
     printf("running server at %s:%i\n",SERVER_ADDRESS,SERVER_PORT);
     svr.listen(SERVER_ADDRESS, SERVER_PORT);
-} 
+}
 
 
 #ifdef _WIN32
@@ -90,7 +94,7 @@ void listen_server() {
             return 0;
         }
 
-        WNDCLASS wc = {0}; 
+        WNDCLASS wc = {0};
         wc.lpfnWndProc = WindowProcess;
         wc.hInstance = hInstance;
         wc.lpszClassName = CLASS_NAME;
